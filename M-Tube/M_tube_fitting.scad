@@ -80,12 +80,12 @@ module elbow(angle) {
         for (a=[0: 5 : 180 - angle]) yrot(a, cp=[tube_od/2 + elbow_r ,0 ,0]), 
     ];
 
-    left(tube_od/2 - chord_l/2) up(tube_od + chord_h)                      // Reposition to place bottom center 
-        yrot(180 + angle/2, cp = [tube_od/2, 0, 0])  // of the elbow at the origin after the sweep.
+    left(tube_od/2 - chord_l/2) up(tube_od + chord_h)   // Reposition to place bottom center 
+        yrot(180 + angle/2, cp = [tube_od/2, 0, 0])     // of the elbow at the origin after the sweep.
   
     sweep(region, transforms, closed=false, caps=true);     
     
-    //  up(tube_od + chord_h) xrot(-90) ruler(anchor = BACK);
+    //  up(tube_od + chord_h) xrot(-90) ruler(anchor = BACK);    //uncomment to show ruler
 }
 
 
