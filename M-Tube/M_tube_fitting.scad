@@ -11,30 +11,42 @@
 
 include <BOSL2/std.scad>
 
+/* [Select Part to Render] */
 part = "all";       //  [all,elbow,neck,mount,half,clip]
-angle = 90;         //  [30,60,90]
-pin = true;         //  [true,false]
-mount = true;       //  [true,false]    
-flat = true;        //  [true,false]    
 
-tube_id = 16.85;    //  Tube id             <-- Adjust this value to fit for over/under extrusion
+/* [ Tube Dimensions ] */
+//Adjust tube_id to compensate for over/under extrusion
+tube_id = 16.85;    //  Tube id            
 tube_wall = 2.6;    //  Tube wall 
 
 insert_wall = 2;    // Insert wall 
 insert_h = 10;      // Length of insert
 neck_h = 7;         // Length of neck 
 
-card  = 1.5;        // LED backing card slot
+/* [Elbow] */
+angle = 90;         //  [30,60,90]
+// Elbow radius of curvature
+elbow_r = 0;       
+flat = true;        //  [true,false]    
+
+/* [Pin] */
+pin = true;         //  [true,false]
 pin_d = 2;          // LED strip routing pin
+
+/* [Mount Tab] */
+mount = true;       //  [true,false]    
 hole = 4;           // Mounting hole diameter
 
-elbow_r = 0;        // Elbow radius of curvature
 
+/* [LED Backing Card Thickness] */
+card  = 1.5;        // LED backing card thickness
+
+/* [Y Position of Slice Plane] */
 slice_y = 0;        // Y position of slice plane
 
 
-module hide_variables () {}	// variables below hidden from Customizer
-
+//module hide_variables () {}	// variables below hidden from Customizer
+/* [Hidden] */
 $fn=72;
 eps = 0.1;
 
