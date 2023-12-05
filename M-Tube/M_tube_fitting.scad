@@ -30,11 +30,11 @@ elbow_r = 0;
 flat = true;        //  [true,false]    
 
 /* [Pin] */
-pin = true;         //  [true,false]
+add_pin = true;         //  [true,false]
 pin_d = 2;          // LED strip routing pin
 
-/* [Mount Tab] */
-mount = true;       //  [true,false]    
+/* [Mounting Tab] */
+add_tab = true;       //  [true,false]    
 hole = 4;           // Mounting hole diameter
 
 
@@ -45,11 +45,9 @@ card  = 1.5;        // LED backing card thickness
 slice_y = 0;        // Y position of slice plane
 
 
-//module hide_variables () {}	// variables below hidden from Customizer
 /* [Hidden] */
 $fn=72;
 eps = 0.1;
-
 
 tube_od = tube_id + 2 * tube_wall;    //  Tube od  
 tube_ir = tube_id/2;     //  Tube internal radius
@@ -71,7 +69,7 @@ chord_h = (elbow_r) * (1 - cos((180-angle)/2));  //elbow_r > 0
 if (part == "all")   M_tube_fitting(angle);
 if (part == "elbow") elbow(angle);
 if (part == "neck")  neck();
-if (part == "mount")  mount();
+if (part == "tab")   tab();
 if (part == "clip")  clip(); 
 if (part == "half")  front_half(y = slice_y) M_tube_fitting(angle);
 
@@ -87,9 +85,9 @@ module M_tube_fitting (angle) {
         up(tube_od + chord_h - (sin(angle/2) * tube_od/2)) right(chord_l/2 + cos(angle/2) * tube_od/2) yrot(angle/2) neck();
     }
 
-    if (pin)  up(tube_od/2) ycyl(d = pin_d, h = tube_id);      //LED strip routing pin
+    if (add_pin)  up(tube_od/2) ycyl(d = pin_d, h = tube_id);      //LED strip routing pin
 
-    if (mount) fwd(tube_od/2 - tab.y)  up(tube_od * 0.75) mount();  //Mounting tab w/screw hole
+    if (add_tab) fwd(tube_od/2 - tab.y)  up(tube_od * 0.75) tab();  //Mounting tab w/screw hole
 }
 
 module elbow(angle) {
@@ -118,11 +116,11 @@ module neck() {
     }
 }
 
-module mount() {  // Mounting tab
-    tag_scope("mount")
+module tab() {  // Mounting tab
+    tag_scope("tab")
     diff() {
         conv_hull() {
-            xscale(3) ycyl(d = tab.x, h = tab.y, anchor = BACK);
+            xscale(3) ycyl(d = tab.x, h = tab.y, rounding1 = tab.y/2, anchor = BACK);
             up(tube_od/2) ycyl(d = tab.x, h = tab.y, anchor = BACK);
         }
         up(tube_od/2) tag("remove") ycyl(d = hole, h = tab.y, rounding2 = -tab.y/2, anchor = BACK);
