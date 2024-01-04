@@ -69,7 +69,7 @@ chord_h = (elbow_r) * (1 - cos((180-angle)/2));  //elbow_r > 0
 if (part == "all")   M_tube_fitting(angle);
 if (part == "elbow") elbow(angle);
 if (part == "neck")  neck();
-if (part == "tab")   tab();
+if (part == "mount")   tab();
 if (part == "clip")  clip(); 
 if (part == "half")  front_half(y = slice_y) M_tube_fitting(angle);
 
@@ -120,8 +120,8 @@ module tab() {  // Mounting tab
     tag_scope("tab")
     diff() {
         conv_hull() {
-            xscale(3) ycyl(d = tab.x, h = tab.y, rounding1 = tab.y/2, anchor = BACK);
-            up(tube_od/2) ycyl(d = tab.x, h = tab.y, anchor = BACK);
+            xscale(3) #ycyl(d = tab.x, h = tab.y, rounding1 = tab.y/2, anchor = BACK);
+            up(tube_od/2) #ycyl(d = tab.x, h = tab.y, anchor = BACK);
         }
         up(tube_od/2) tag("remove") ycyl(d = hole, h = tab.y, rounding2 = -tab.y/2, anchor = BACK);
     }
