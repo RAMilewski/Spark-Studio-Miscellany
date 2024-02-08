@@ -20,8 +20,8 @@ foot();
 
 module bumper() {
     diff() {
-        zrot(-theta/2) pie_slice(r = bumper.x, h = bumper.z, ang = theta, anchor = BOT, $fn = 144);
-        tag("remove") down(eps/2) zrot(-theta/2 - 1) pie_slice(r = bumper.x - bumper.y, h = bumper.z + eps, ang = theta + 2, anchor = BOT, $fn = 144);
+        zrot(-theta/2) pie_slice(r = bumper.x, h = bumper.z, ang = theta, anchor = BOT, $fn = 144)
+        down(eps/2) zrot(1) attach(BOT) tag("remove") pie_slice(r = bumper.x - bumper.y, h = bumper.z + eps, ang = theta + 2, anchor = TOP, $fn = 144);
         //round the ends of the bumper
         up(bumper.z)
             zrot_copies([-theta/2, theta/2], r = bumper.x - bumper.y - 0.5)
