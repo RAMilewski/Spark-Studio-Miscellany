@@ -5,5 +5,5 @@ fudge=[1,1,1];
 id = board + fudge;
 wall = 4;
 
-rect_tube(isize = [id.x, id.y], h=id.x, wall = wall);
+rect_tube(isize = [id.x, id.y], h=id.z, wall = wall);
 
