@@ -1,0 +1,19 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "New set 1": {
+            "$fn": "72",
+            "$slop": "0.050000000000000003",
+            "board": "[83, 135.8, 17.9]",
+            "corner": "6",
+            "d_cable": "8",
+            "floor": "3",
+            "fudge": "[3, 3, 0]",
+            "pattern": "[3, 3]",
+            "screw": "M3",
+            "screwhead": "socket",
+            "top": "true",
+            "wall": "10"
+        }
+    }
+}
