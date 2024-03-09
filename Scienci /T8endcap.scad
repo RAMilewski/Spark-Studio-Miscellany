@@ -17,7 +17,7 @@ module knob() {
     difference() {
         cyl(d1 = 25, d2 = 15, rounding1 = 3, teardrop = false,  h=15, anchor=BOT);
         up(3) acme_threaded_rod(
-            d=9, l=20, pitch=2, starts=4,
+            d=8, l=20, pitch=2, starts=4,
             internal=true, $slop = .3, bevel=false,
             blunt_start=false, anchor=BOT
         );
