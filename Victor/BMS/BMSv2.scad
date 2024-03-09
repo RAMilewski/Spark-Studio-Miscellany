@@ -25,7 +25,7 @@ pattern = [3,3];        //screw pattern [columns, rows]
 
 shell(top);
 
-module shell (isTop) {
+module shell (top) {
     diff() {
         rect_tube(isize = [id.x, id.y], wall = wall, h = board.z/2, rounding = corner, anchor = CENTER) {
             
@@ -34,12 +34,16 @@ module shell (isTop) {
             tag("remove") move(cable_offset) xcyl(d = d_cable, l = board.x * 2, anchor = CENTER);
             
             tag("remove") down(floor/2) grid_copies(n = [3,4], size = [od.x - wall, od.y - wall]) 
-                if (isTop == true) {
+                if (top == true) {
                 zflip() screw_hole(screw, head = screwhead, counterbore = true, l = board.z/2, $fn=32);
                 } else {
                 screw_hole(screw, l = board.z/2 + floor, $fn=32)
                     position(BOT) nut_trap_inline(5);
                 }
+            if (top == false) {
+                align(FRONT+TOP) tag("remove") right(3) down(5.3) cuboid([67,10,5.4]);
+                *align(FRONT+BOT) fwd(10) ruler();
+            }
         }
     }
 }
