@@ -2,6 +2,7 @@ include <BOSL2/std.scad>
 include <BOSL2/threading.scad>
 
 $fn = 72;
+slop = 0.35;
 
 difference() {
     knob();
@@ -18,7 +19,7 @@ module knob() {
         cyl(d1 = 25, d2 = 15, rounding1 = 3, teardrop = false,  h=15, anchor=BOT);
         up(3) acme_threaded_rod(
             d=8, l=20, pitch=2, starts=4,
-            internal=true, $slop = .37, bevel=false,
+            internal=true, $slop = slop, bevel=false,
             blunt_start=false, anchor=BOT
         );
     }
